@@ -1,0 +1,30 @@
+<div class="artist-list container">
+    <div class="row row-padding">
+      <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-8">
+                <form [formGroup]='searchForm'>
+                <mat-form-field class="col-md-12 bg-grey">
+                    <input matInput type="search" placeholder="Search here" [matAutocomplete]="auto" formControlName='searchInput'>
+                    <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngIf="isLoading" class="is-loading"><mat-spinner diameter="50"></mat-spinner></mat-option>
+                    <ng-container class="col-md-12 bg-grey"  *ngIf="!isLoading">
+                      <mat-option *ngFor="let artist of filteredArtists" (click)="loadAlbums(artist.name)" [value]="artist">
+                          <span>{{ artist.name }}</span>
+                      </mat-option>
+                    </ng-container>
+                  </mat-autocomplete>
+                  </form>
+            </div>
+            
+            <div class="col-md-4">
+                <button mat-flat-button class="search-button">Search</button>
+            </div>
+        </div>
+         
+      </div>
+    </div>
+    <app-search-results *ngIf="filteredAlbums && selectedArtist" [albumList]="filteredAlbums" [selectArtist]="selectedArtist"></app-search-results>
+  </div>

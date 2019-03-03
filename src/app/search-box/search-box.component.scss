@@ -1,0 +1,34 @@
+.artist-list{
+    color:#ffffff;
+}
+.container {
+    background-color:#000;
+    min-height:100%;
+    padding:10px;
+}
+
+.row-padding{
+    padding:10px;
+}
+
+.search-button{
+    background-color:#30EDDA;
+    padding:8px;
+    text-transform: uppercase;
+}
+
+
+::ng-deep .mat-autocomplete-panel{
+    background-color:#3e3838;
+    color:	#D3D3D3;
+}
+
+::ng-deep .mat-option{
+    color:	#D3D3D3;
+}
+
+::ng-deep .cdk-overlay-pane {
+    /* Do you changes here */
+    margin-left:-11px;
+     margin-top:26px;
+}
