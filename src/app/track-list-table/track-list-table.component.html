@@ -3,11 +3,11 @@
       <div class="row padding-left-10 padding-bottom-20">
         <div class="col-md-2">
             <mat-card class="col-md-12 example-card">
-                <img mat-card-image [src]="selectedAlbum.cover_medium" alt="Photo of a Shiba Inu">
+                <img mat-card-image *ngIf="selectedAlbum" [src]="selectedAlbum.cover_medium" alt="Photo of a Shiba Inu">
             </mat-card>
         </div>
         <div class="col-md-9">
-          <div class="col-md-12 aqua-font padding-bottom-20">{{ selectedAlbum.title }}</div>
+          <div *ngIf="selectedAlbum" class="col-md-12 aqua-font padding-bottom-20">{{ selectedAlbum.title }}</div>
           <div class="col-md-12">
               <table mat-table [dataSource]="dataSource" class="track-table mat-elevation-z8">
 

@@ -23,7 +23,7 @@ export class TrackListTableComponent implements OnInit, DoCheck{
   }
 
  ngDoCheck() {
-    if (this.restoreAlbumId !== this.selectedAlbum.id) {
+    if (this.selectedAlbum && this.restoreAlbumId !== this.selectedAlbum.id) {
         this.dataSource = this.tracks;
         this.cd.markForCheck();
     } 
