@@ -18,18 +18,5 @@
             </mat-card>
       </div>
   </div>
-  <div *ngIf="trackList.length > 0" class="col-md-12 margin-top-20 padding-top-20">
-      <div class="row padding-left-10 padding-bottom-20">
-        <div class="col-md-2">
-            <mat-card class="col-md-12 example-card">
-                <img mat-card-image [src]="albumcover" alt="Photo of a Shiba Inu">
-            </mat-card>
-        </div>
-        <div class="col-md-9">
-          <div class="col-md-12 aqua-font padding-bottom-20">{{ albumname }}</div>
-          <div class="col-md-12"><app-track-list-table [tracklist]="trackList" [albumId]="albumId"></app-track-list-table></div>
-        </div>
-      </div>
-  </div>
 </div>
 

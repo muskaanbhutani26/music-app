@@ -26,5 +26,6 @@
          
       </div>
     </div>
-    <app-search-results *ngIf="filteredAlbums && selectedArtist" [albumList]="filteredAlbums" [selectArtist]="selectedArtist"></app-search-results>
+    <app-search-results *ngIf="filteredAlbums && selectedArtist" [albumList]="filteredAlbums" [selectArtist]="selectedArtist" (albumChange)='getAlbumID($event)'></app-search-results>
+    <app-track-list-table *ngIf="album && trackList.length > 0" [selectedAlbum]="album" [tracks]="trackList"></app-track-list-table>
   </div>

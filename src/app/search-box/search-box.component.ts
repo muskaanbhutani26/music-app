@@ -15,7 +15,8 @@ export class SearchBoxComponent implements OnInit {
   searchForm: FormGroup;
   isLoading = false;
   selectedArtist;
-
+  album = null;
+  trackList = [];
   constructor(private fb: FormBuilder, private dreezerMusicService: DreezerMusicService) { }
 
   ngOnInit() {
@@ -29,6 +30,7 @@ export class SearchBoxComponent implements OnInit {
       distinctUntilChanged()
     ).subscribe((data) => {
         this.isLoading = true;
+        this.album = null;
         this.searchArtists(data);
         if(data == ''){
           this.selectedArtist= null;
@@ -43,7 +45,6 @@ export class SearchBoxComponent implements OnInit {
   searchArtists(data){
     this.dreezerMusicService.searchArtist(data).subscribe((response: any) => {
       this.isLoading = false;
-      console.log(response);
       this.filteredArtists = response.data;
     }, (error) => {
       // console.log(error);
@@ -56,9 +57,21 @@ export class SearchBoxComponent implements OnInit {
 
   loadAlbums(artistName){
     this.dreezerMusicService.searchAlbum(artistName).subscribe((response: any) => {
-      console.log(response);
       this.selectedArtist = artistName;
       this.filteredAlbums = response.data;
+    }, (error) => {
+      // console.log(error);
+    });
+  }
+
+  getAlbumID(album){
+    this.album = album;
+    this.getTrackListByAlbum();
+  }
+
+  getTrackListByAlbum(){
+    this.dreezerMusicService.getTrackList(this.album.id).subscribe((response: any) => {
+      this.trackList= response.data;
     }, (error) => {
       // console.log(error);
     });
